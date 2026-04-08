@@ -128,17 +128,17 @@ What happens during this step:
 
 #### 4.2 Alternative using Sever Manager GUI
 1. Open **Server Manager** (opens automatically on login)
-![Server Manager](../Images/server_manager.png)
+![Server Manager](../diagrams/server_manager.png)
 2. Click **Add roles and features** under **Manage**
 ![Add Roles and Features](../Images/add_roles_and_features.png)
 3. Click **Next** until you reach **Server Roles**
 4. Check **Active Directory Domain Services**
-![Add Roles and Features Wizard](../Images/add_roles_and_features_wizard.png)
+![Add Roles and Features Wizard](../diagrams/add_roles_and_features_wizard.png)
 5. Click **Add Features**
 6. Click **Next** and complete installation
 7. Click the flag icon in **Server Manager** → **`Promote this server to a domain controller`**
 8. Select **Add a new forest**
-![Adding a new forest](../Images/adding_a_forest.png)
+![Adding a new forest](../diagrams/adding_a_forest.png)
 9. Enter your domain as the root domain name
 10. Click through the wizard and complete promotion to DC.
 11. Server will restart
@@ -159,7 +159,7 @@ Name              : Ijipe
 DistinguishedName : DC=Ijipe,DC=local
 NetBIOSName       : IJIPE
 ```
-![Verify AD DS installation](../Images/verify_AD_DS_installation.png)
+![Verify AD DS installation](../diagrams/verify_AD_DS_installation.png)
 
 #### 5.2 Verify DNS
 

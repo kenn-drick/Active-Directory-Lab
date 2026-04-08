@@ -20,11 +20,11 @@ To create a single user manually:
 1. Open **Active Directory Users and Computers**.
 2. Navigate to the target OU (e.g., `Corporate\Users`).
 3. Right‑click → **New** → **User**.
-![Add Users](./Images/add_users.png)
+![Add Users](../diagrams/add_users.png)
 4. Fill in first name, last name, user logon name.
-![New User Details](./Images/new_user_details.png)
+![New User Details](./diagrams/new_user_details.png)
 5. Set a password and choose **User must change password at next logon** (optional).
-![New User Password](./Images/new_user_pass.png)
+![New User Password](../diagrams/new_user_pass.png)
 
 ### Interactive PowerShell Script 
 
@@ -83,12 +83,11 @@ I then cretated groups in the `Global` and `DomainLocal` OUs that were set up ea
 1. Open Active Directory Users and Computers.
 2. Navigate to the appropriate Global OU (e.g., Branches → Nigeria → Groups → Global).
 3. Right‑click → New → Group.
-![New Group](./Images/new_group.png)
+![New Group](../diagrams/new_group.png)
 4. Group name: e.g., Coorp_IT
 5. Group scope: Global
 6. Group type: Security
-
-![Group Details](./Images/group_details.png)
+![Group Details](../diagrams/group_details.png)
 
 
 > **Note on Group Scopes and Types**
@@ -103,12 +102,12 @@ I then cretated groups in the `Global` and `DomainLocal` OUs that were set up ea
 8. Repeat for each department (HR, IT, Management, Sales) and for each branch (Nigeria, South Africa, and Corporate).
 9. Navigate to the corresponding DomainLocal OU (e.g., Branches → Nigeria → Groups → DomainLocal).
 10. Create matching Domain Local groups with the same naming convention, e.g., Accounting_DL, HR_DL, etc.
-11. Group scope: Domain Local
-12. Group type: Security
+11. Group scope: `Domain Local`
+12. Group type: `Security`
 
 ## 👥 Adding Members to Global Groups
 
-Once groups exist, I added users to the appropriate Global groups. This can be done via the GUI (right‑click group → Add Members) or with PowerShell.
+Once groups exist, I added users to the appropriate Global groups. This can be done via the GUI **(right‑click group → Add Members)** or with **PowerShell**:
 
 ```powershell
 Add-ADGroupMember -Identity "<group_name>" -Members "<logon_name>"
@@ -120,15 +119,14 @@ I then joined a Windows client (a Windows 10 VM) to the domain, follow these ste
 
 ### Using the GUI
 1. On the client, open **Settings** → **System** → **About**.
-![Computer Settings](./Images/settings.png)
+![Computer Settings](../diagrams/settings.png)
 2. Click **Rename this PC (Advanced)**.
-![Rename PC](./Images/rename_PC.png)
+![Rename PC](../diagrams/rename_PC.png)
 This will open `System Properties` dialogue box.
 3. Under **Computer Name**, click **Change** to reaname the PC or change its domain or workgroup.
-![Change Computer Domain](./Images/change_PC_domain.png)
+![Change Computer Domain](../diagrams/change_PC_domain.png)
 4. Select **Domain** and enter `<domain.name>`.
-
-![Joining Domain](./Images/join_domain.png)
+![Joining Domain](../diagrams/join_domain.png)
 
 5. Click **OK** and provide domain administrator credentials (e.g., `IJIPE\Administrator`).
 6. Restart the computer when prompted.
@@ -139,6 +137,8 @@ As an administrator, run:
 ```powershell
 Add-Computer -DomainName "<domain.name" -Credential IJIPE\Administrator -Restart
 ```
+
+
 > **Note: Requirements for Joining a Domain**
 > 
 > Before joining a computer to the domain, ensure:

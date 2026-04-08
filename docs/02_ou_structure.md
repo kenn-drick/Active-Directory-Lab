@@ -76,7 +76,7 @@ I used **Active Directory Users and Computers** (dsa.msc) to create the OUs.
 2. **Enable Advanced Features** (View → Advanced Features) – this shows more tabs and is helpful for delegation.
 3. **Create the top‑level OUs** (Branches, Corporate):
    - Right‑click the domain (`Ijipe.local`) → **New** → **Organizational Unit**.
-   ![Creating OUs](../Images/cretate_OU.png)
+   ![Creating OUs](../diagrams/cretate_OU.png)
    - Enter the name (e.g., `Branches`) and click **OK**.
    - Repeat for `Corporate`.
 4. **Create child OUs** under each top‑level OU:
@@ -93,7 +93,7 @@ I used **Active Directory Users and Computers** (dsa.msc) to create the OUs.
 
 Below is the final OU structure in Active Directory Users and Computers:
 
-![OU Structure](../Images/OU_structure.png)  
+![OU Structure](../diagrams/OU_structure.png)  
 *Active Directory Users and Computers showing the custom OUs for Branches, Corporate, and the group containers.*
 
 ## 🤖 PowerShell Alternative (Optional)

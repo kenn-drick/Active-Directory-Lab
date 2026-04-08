@@ -18,7 +18,7 @@ A strong password policy is the first line of defence against unauthorised acces
 These settings align with Microsoft’s security baseline and industry best practices (e.g., NIST, CIS). They apply to all domain user accounts.
 
 To test the policy enforcement, I created an account and tried to set a non-compiant password.
-![Password Policy Check](../Images/pass_policy.png)
+![Password Policy Check](../diagrams/pass_policy.png)
 
 ## 🔒 Account Lockout Policy
 
@@ -33,7 +33,7 @@ To mitigate brute‑force and password‑spraying attacks, I configured an accou
 These settings balance security with usability. For privileged accounts, a lower threshold (e.g., 3 attempts) could be applied using **Fine‑Grained Password Policies** (not yet implemented).
 
 I then tested this policy with incorrect passwords on an account
-![Account lockout policy](../Images/acc_lockout_policy.png)
+![Account lockout policy](../diagrams/acc_lockout_policy.png)
 
 ## 👥 User Rights Policy
 

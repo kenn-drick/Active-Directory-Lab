@@ -1,70 +1,88 @@
 # Active Directory Homelab
 
-This repository documents a comprehensive Active Directory homelab project. The goal is to build a fully functional Windows domain from scratch, covering essential administration tasks and advanced security features. It is designed as a learning resource for aspiring system administrators and IT professionals.
+This repository documents a comprehensive Active Directory homelab project. The goal is to build a fully functional Windows domain from scratch, covering essential administration tasks and security features. It is designed as a learning resource for aspiring system administrators and IT professionals.
 
 ## 🎯 Project Scope
 
 - ✅ **Initial Setup:** Install Windows Server, promote Domain Controller, configure DNS.
 - ✅ **OU Design:** Create a logical, multi‑branch organizational unit structure.
 - ✅ **User & Group Management:** Create users and groups manually and with PowerShell.
-- 🔲 **Group Policy Management:** Implement and link GPOs for security and user settings.
-- 🔲 **Service Accounts:** Create and manage dedicated service accounts.
-- 🔲 **Windows File Sharing:** Set up SMB shares with appropriate permissions.
-- 🔲 **Effective Permissions & Inheritance:** Understand and configure NTFS/share permissions.
-- 🔲 **Access‑Based Enumeration:** Enable ABE to hide unallowed files/folders.
-- 🔲 **Fine‑Grained Password Policies:** Implement PSOs for different user groups.
-- 🔲 **Security Policies:** Additional hardening (e.g., account lockout, audit policies).
+- ✅ **Group Policy Management:** Implement and link GPOs for security and user settings (password policy, account lockout, user rights, drive mapping).
+- 🔲 **Service Accounts:** Create and manage dedicated service accounts (planned).
+- ✅ **Windows File Sharing:** Set up SMB shares with appropriate permissions.
+- ✅ **Effective Permissions & Inheritance:** Understand and configure NTFS/share permissions.
+- ✅ **Access‑Based Enumeration:** Enable ABE to hide unallowed files/folders.
+- 🔲 **Fine‑Grained Password Policies:** Implement PSOs for different user groups (future).
+- ✅ **Security Policies:** Additional hardening (account lockout, user rights, shutdown restrictions).
 
-*Checked items are already completed and documented; unmarked items are in progress.*
+*Checked items are completed and documented; unmarked items are planned.*
 
 ## 🏗️ Lab Environment
 
-- **Domain:** `ljipe.local`
+- **Domain:** `Ijipe.local`
 - **Windows Server version:** Windows Server 2019
 - **Domain Controllers:** 1
 - **Client machines:** Windows 10 VMs joined to the domain
-- **Virtualization:** VirtualBox 
+- **Virtualization:** VirtualBox
 
 ## 📁 Active Directory Structure
 
-The OU hierarchy is designed to support geographic branches and functional roles, making it easy to apply targeted Group Policies and delegate administration.
+The OU hierarchy is designed to support geographic branches (Nigeria, South Africa) and corporate functions, making it easy to apply targeted Group Policies and delegate administration.
 
-[diagram placeholder]
+```
+Ijipe.local
+├── Branches
+│ ├── Nigeria
+│ │ ├── Groups (DomainLocal, Global)
+│ │ └── Users (Accounting, HR, IT, Management, Sales)
+│ └── South Africa
+│ ├── Groups (DomainLocal, Global)
+│ └── Users (Accounting, HR, Management, Sales)
+├── Corporate
+│ ├── Computers
+│ ├── Groups (DomainLocal, Global)
+│ ├── Servers (Database Server, File Server, Web Server)
+│ └── Users
+├── Builtin (default)
+├── Domain Controllers (default)
+└── ...
+```
+
+
+*Full OU tree with group containers is documented in `docs/02-ou-structure.md`.*
 
 ## 🛠️ Implemented Features
 
 - **Domain Controller** with AD DS and DNS.
 - **Custom OUs** for branches, departments, and servers.
-- **User accounts** created manually and via PowerShell script.
-- **Global and domain local groups** for permission management.
-- **Basic GPOs:** password policy, drive mapping, account lockout policy and disable control panel access.
-- **Security & File Services** 
-
-The following areas will be covered in detail in the corresponding documentation:
-
-| Topic | Description |
-|-------|-------------|
-| **Fine‑grained password policies** | Set different password requirements for privileged vs. regular users. |
-| **Service accounts** | Create accounts for SQL, IIS, etc., with least privilege. |
-| **File sharing** | Configure SMB shares, set NTFS and share permissions. |
-| **Effective permissions & inheritance** | Understand how permissions combine and propagate. |
-| **Access‑based enumeration** | Enable ABE so users see only what they can access. |
-| **Advanced GPOs** | Deploy software, restrict USB, enforce auditing. |
+- **User accounts** – created interactively with a PowerShell script, including department descriptions.
+- **Global and Domain Local groups** following the AGDLP principle.
+- **Group Policy Objects:**
+  - Password Policy (minimum length 14, complexity, history, max age)
+  - Account Lockout Policy (5 attempts, 10 min lockout)
+  - User Rights Policy (allow local logon only to Admins and IT, deny network access to non‑IT, restrict shutdown)
+  - Drive Mapping (automatically maps network share via GPO)
+- **File sharing** – central `Departments` share with subfolders for each department.
+- **NTFS and share permissions** – department‑specific access using Domain Local groups.
+- **Access‑Based Enumeration (ABE)** – users see only their department’s folder.
+- **File Server Resource Manager (FSRM)** – quotas and file screens (explained, not yet fully deployed).
 
 ## 📂 Repository Contents
 
 - **`/docs`** – Step‑by‑step guides for each phase of the project.
-- **`/scripts`** – PowerShell scripts to automate user creation, service account setup, and file share configuration.
-- **`/policies`** – Exported GPO backups and notes on security settings.
-- **`/diagrams`** – Visuals of the AD topology, OU structure, and file sharing design.
+- **`/scripts`** – PowerShell scripts for user creation, OU creation, and ABE enablement.
+- **`/diagrams`** – Screenshots of ADUC, GPMC, file shares, etc.
 
 ## 💼 Skills Acquired
+
 - Windows Server installation and configuration
 - Active Directory Domain Services (AD DS)
 - OU design and delegation
-- User and group management
-- Group Policy Object (GPO) administration
+- User and group management (AGDLP)
+- Group Policy Object (GPO) administration (password, lockout, user rights, drive maps)
 - PowerShell scripting for automation
 - File sharing and permissions (NTFS vs Share)
-- Security policy implementation (fine‑grained passwords, audit)
+- Access‑Based Enumeration (ABE)
+- Security policy implementation (account lockout, user rights)
 - Technical documentation
+
