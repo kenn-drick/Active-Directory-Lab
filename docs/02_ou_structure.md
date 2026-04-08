@@ -90,27 +90,6 @@ I used **Active Directory Users and Computers** (dsa.msc) to create the OUs.
    - Under `Groups`, create `DomainLocal` and `Global`.
    - Under `Servers`, create `Database Server`, `File Server`, `Web Server`.
 
-6. **Create the Actual Group Objects (Global and Domain Local)**
-
-After the OU structure is ready, I created the actual group objects that will hold user accounts and permissions.
-
-1. **Navigate** to the `Global` OU under a branch, e.g., `Branches → Nigeria → Groups → Global`.
-2. Right‑click the `Global` OU → **New** → **Group**.
-![Create groups](../Images/add_group.png)
-3. In the **New Object – Group** dialog:
-   - **Group name:** e.g., `Accounting_Global`
-   - **Group scope:** **Global**
-   - **Group type:** **Security**
-   - Click **OK**.
-4. Repeat for other departments: `HR_Global`, `IT_Global`, `Management_Global`, `Sales_Global`.
-5. **Navigate** to the corresponding `DomainLocal` OU, e.g., `Branches → Nigeria → Groups → DomainLocal`.
-6. Create matching Domain Local groups with the same naming convention, e.g., `Accounting_DL`, `HR_DL`, etc.
-   - **Group scope:** **Domain Local**
-   - **Group type:** **Security**
-7. Repeat the same process for the **South Africa** branch and the **Corporate** `Groups` OU (under Corporate → Groups → Global and DomainLocal).
-
-> **Note:** Global groups will later contain user accounts from the same branch/department. Domain Local groups will be used to assign permissions to resources (e.g., file shares) and will have the corresponding Global groups nested inside them. This follows the AGDLP best practice.
-
 
 Below is the final OU structure in Active Directory Users and Computers:
 
