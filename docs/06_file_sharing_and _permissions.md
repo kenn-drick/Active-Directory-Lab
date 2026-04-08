@@ -21,17 +21,22 @@ A central file server allows users to store and share documents securely. In thi
 
 ### Step 2: Configure Share Permissions
 1. Right‑click `C:\SHARE` → **Properties** → **Sharing** tab → **Advanced Sharing**.
-   ![Advanced Sharing](../diagrams/advanced_sharing.png)
+
+![Advanced Sharing](../diagrams/advanced_sharing.png)
+
 2. Check **Share this folder**. The share name defaults to `SHARE`.
 3. Click **Permissions**.
 4. Remove `Everyone` (if present). Click **Add**, type `IJIPE\Users`, and click **OK**.
-   ![Add Domain users](../diagrams/add_domain_users.png)
+
+![Add Domain users](../diagrams/add_domain_users.png)
+
 5. Assign **Full Control** to `IJIPE\Users` at the share level. This gives all domain users full access over the network.
 6. Click **OK** → **OK**.
 
 ### Step 3: Configure NTFS Permissions
 1. In the folder **Properties**, go to the **Security** tab.
-  ![NTFS Permissions](../diagrams/NTFS_share.png)
+
+![NTFS Permissions](../diagrams/NTFS_share.png)
 
 2. Click **Edit**.
 3. Add `IJIPE\Users` and grant **Modify**, **Read & Execute**, **List Folder Contents**, **Read**, and **Write**. (Modify allows users to create, change, and delete files.)
@@ -53,7 +58,9 @@ Manually mapping drives on each client is tedious. Instead, I used a GPO to auto
 4. In the Group Policy Management Editor, navigate to:
    **User Configuration** → **Preferences** → **Windows Settings** → **Drive Maps**.
 5. Right‑click **Drive Maps** → **New** → **Mapped Drive**.
-   ![Mapped Drive GPO](../diagrams/driver_mapping.png)
+
+![Mapped Drive GPO](../diagrams/driver_mapping.png)
+
 6. Configure the mapped drive:
    - **Action:** Create
    - **Location:** `\\<ServerName>\SHARE` (replace `<ServerName>` with the actual server name or IP)
@@ -61,7 +68,7 @@ Manually mapping drives on each client is tedious. Instead, I used a GPO to auto
    - **Drive Letter:** Select a letter (e.g., `S:`)
    - **Reconnect:** Checked (to make it persistent)
 
-  ![Configure Mapped Drice](../diagrams/new_driver_properties.png)
+![Configure Mapped Drice](../diagrams/new_driver_properties.png)
 
 7. Click **Apply** and **OK**.
 8. Close the editor.
@@ -83,6 +90,7 @@ After the GPO is linked and replication occurs, users will receive the mapped dr
   ```
 
 - The mapped drive should appear under `This PC` in the `File Explorer`
+
 ![Mapped Drive](../diagrams/mapped_folder_on_client.png)
 
 ## 📊 File Server Resource Manager (FSRM)

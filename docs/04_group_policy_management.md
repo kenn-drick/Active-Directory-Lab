@@ -75,6 +75,7 @@ A GPO does nothing until it is linked to an OU. The link determines which users/
 ## 🧪 Testing GPO Application
 
 After linking GPOs, I verified they apply correctly using `gpresult` and by checking the client’s behavior, like trying to access the `Control Panel` showing that the **Policies** have been effected.
+
 ![Restriction](../diagrams/restrictions.png)
 
 ### On a domain‑joined computer (as a user), run:

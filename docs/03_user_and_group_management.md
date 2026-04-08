@@ -20,10 +20,15 @@ To create a single user manually:
 1. Open **Active Directory Users and Computers**.
 2. Navigate to the target OU (e.g., `Corporate\Users`).
 3. Right‑click → **New** → **User**.
+
 ![Add Users](../diagrams/add_users.png)
+
 4. Fill in first name, last name, user logon name.
+
 ![New User Details](./diagrams/new_user_details.png)
+
 5. Set a password and choose **User must change password at next logon** (optional).
+
 ![New User Password](../diagrams/new_user_pass.png)
 
 ### Interactive PowerShell Script 
@@ -83,10 +88,13 @@ I then cretated groups in the `Global` and `DomainLocal` OUs that were set up ea
 1. Open Active Directory Users and Computers.
 2. Navigate to the appropriate Global OU (e.g., Branches → Nigeria → Groups → Global).
 3. Right‑click → New → Group.
+
 ![New Group](../diagrams/new_group.png)
+
 4. Group name: e.g., Coorp_IT
 5. Group scope: Global
 6. Group type: Security
+
 ![Group Details](../diagrams/group_details.png)
 
 
@@ -119,13 +127,20 @@ I then joined a Windows client (a Windows 10 VM) to the domain, follow these ste
 
 ### Using the GUI
 1. On the client, open **Settings** → **System** → **About**.
+
 ![Computer Settings](../diagrams/settings.png)
+
 2. Click **Rename this PC (Advanced)**.
+
 ![Rename PC](../diagrams/rename_PC.png)
+
 This will open `System Properties` dialogue box.
 3. Under **Computer Name**, click **Change** to reaname the PC or change its domain or workgroup.
+
 ![Change Computer Domain](../diagrams/change_PC_domain.png)
+
 4. Select **Domain** and enter `<domain.name>`.
+
 ![Joining Domain](../diagrams/join_domain.png)
 
 5. Click **OK** and provide domain administrator credentials (e.g., `IJIPE\Administrator`).
