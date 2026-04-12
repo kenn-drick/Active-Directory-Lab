@@ -25,6 +25,8 @@ This repository documents a comprehensive Active Directory homelab project. The 
 - **Client machines:** Windows 10 VMs joined to the domain
 - **Virtualization:** VirtualBox
 
+![Network Diagram](./diagrams/AD.png)
+
 ## 📁 Active Directory Structure
 
 The OU hierarchy is designed to support geographic branches (Nigeria, South Africa) and corporate functions, making it easy to apply targeted Group Policies and delegate administration.
@@ -49,7 +51,7 @@ Ijipe.local
 ```
 
 
-*Full OU tree with group containers is documented in `docs/02-ou-structure.md`.*
+>Full OU tree with group containers is documented in [OU_structure](./docs/02-ou-structure.md)
 
 ## 🛠️ Implemented Features
 
@@ -69,9 +71,10 @@ Ijipe.local
 
 ## 📂 Repository Contents
 
-- **`/docs`** – Step‑by‑step guides for each phase of the project.
-- **`/scripts`** – PowerShell scripts for user creation, OU creation, and ABE enablement.
-- **`/diagrams`** – Screenshots of ADUC, GPMC, file shares, etc.
+- [/docs](./docs/) – Step‑by‑step guides for each phase of the project.
+- [/scripts](./scripts/) – PowerShell scripts for user creation, OU creation, and ABE enablement.
+- [/diagrams](./diagrams/) – Screenshots of ADUC, GPMC, file shares, etc.
+- [/report](./reports/) – Report on Group Policy Objects.
 
 ## 💼 Skills Acquired
 
@@ -84,5 +87,6 @@ Ijipe.local
 - File sharing and permissions (NTFS vs Share)
 - Access‑Based Enumeration (ABE)
 - Security policy implementation (account lockout, user rights)
+- IT administration
 - Technical documentation
 

@@ -88,3 +88,6 @@ Usually, policies are updated in the whole domain within 90 minutes by default. 
 ```cmd
 gpupdate /force
 ```
+To confirm which GPO settings are actually applied, I ran `gpresult /h` on the Domain Controller.
+
+- **Report:** [`gpresult-administrator-dc1.html`](../reports/GPResult.html)
